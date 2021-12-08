@@ -165,16 +165,6 @@
             <!-- 工具包-->
             <dependency>
                 <groupId>com.yyds</groupId>
-                <artifactId>yyds-common-core</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.yyds</groupId>
-                <artifactId>yyds-common-cache</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.yyds</groupId>
                 <artifactId>yyds-common-data</artifactId>
                 <version>${project.version}</version>
             </dependency>

@@ -37,17 +37,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-undertow</artifactId>
         </dependency>
-        <!--安全模块-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.springframework.security.oauth.boot</groupId>-->
-        <!--            <artifactId>spring-security-oauth2-autoconfigure</artifactId>-->
-        <!--        </dependency>-->
-        <!-- core -->
-        <dependency>
-            <groupId>com.yyds</groupId>
-            <artifactId>yyds-common-core</artifactId>
-        </dependency>
-        <!-- datasource -->
         <dependency>
             <groupId>com.yyds</groupId>
             <artifactId>yyds-common-data</artifactId>
