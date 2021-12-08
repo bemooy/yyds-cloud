@@ -1,0 +1,70 @@
+server:
+  port: 7777
+  servlet:
+    context-path: /example
+
+spring:
+  application:
+    name: @artifactId@
+  profiles:
+    active: @profileActive@
+  cloud:
+    nacos:
+      discovery:
+        server-addr: @nacosServer@
+      config:
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        file-extension: yml
+        shared-configs[0]:
+          data-id: application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+          refresh: true
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: root
+      password: yunyou2020#
+      url: jdbc:mysql://base-mysql:3306/base_mall?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8&allowMultiQueries=true&allowPublicKeyRetrieval=true
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    # 开启发送确认
+    publisher-confirms: true
+    # 开启发送失败退回
+    publisher-returns: true
+    listener:
+      direct:
+        acknowledge-mode: manual
+      simple:
+        acknowledge-mode: manual
+        #当前监听容器数
+        concurrency: 1
+        #最大数
+        max-concurrency: 1
+        #是否支持重试
+        retry:
+          enabled: true
+          max-attempts: 3
+          # 重试最大间隔时间
+          max-interval: 10000
+          # 间隔时间乘子，间隔时间*乘子=下一次的间隔时间，最大不能超过设置的最大间隔时间
+          multiplier: 2
+          # 消费自动确认
+          acknowledge-mode: auto
+
+  resources:
+    static-locations: classpath:/static/,classpath:/views/
+
+# actuator
+management:
+  endpoint:
+    shutdown:
+      enabled: true
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: '*'
