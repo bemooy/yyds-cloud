@@ -29,12 +29,11 @@ public class GroupingReducer extends Reducer<OrderBean, Text,Text, NullWritable>
         //3:将K3和V3写入上下文中
         int count = 0;
         for (Text value : values) {
-            context.write(value,NullWritable.get());
+            context.write(value, NullWritable.get());
             count++;
-            if(count >= 2){
+            if(count >= 1){
                 break;
             }
         }
-
     }
 }
